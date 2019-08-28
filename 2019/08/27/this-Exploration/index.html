@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript,this,Web Development,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之后的博文我都会尽力用英文写作，因为之后要准备英文的面试。I will write my next blogs in English to prepare myself for an interview.  thisThe keyword this may be most confusing feature in Javascript, especially for a beginner lik">
+<meta name="keywords" content="Javascript,this,Web Development">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use Javascript &quot;this&quot;">
+<meta property="og:url" content="http://zlhhhhhhh.github.io/2019/08/27/this-Exploration/index.html">
+<meta property="og:site_name" content="Lianghao&#39;s Writing">
+<meta property="og:description" content="之后的博文我都会尽力用英文写作，因为之后要准备英文的面试。I will write my next blogs in English to prepare myself for an interview.  thisThe keyword this may be most confusing feature in Javascript, especially for a beginner lik">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-28T02:54:58.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Use Javascript &quot;this&quot;">
+<meta name="twitter:description" content="之后的博文我都会尽力用英文写作，因为之后要准备英文的面试。I will write my next blogs in English to prepare myself for an interview.  thisThe keyword this may be most confusing feature in Javascript, especially for a beginner lik">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://zlhhhhhhh.github.io/2019/08/27/this-Exploration/">
+
+
+
+
+
+  <title>How to Use Javascript "this" | Lianghao's Writing</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lianghao's Writing</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live with Passion</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zlhhhhhhh.github.io/2019/08/27/this-Exploration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lianghao Zou">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=845&q=80">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lianghao's Writing">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">How to Use Javascript "this"</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-27T21:17:55-05:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web-Dev-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Web Dev Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/27/this-Exploration/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/27/this-Exploration/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>之后的博文我都会尽力用英文写作，因为之后要准备英文的面试。<br><br>I will write my next blogs in English to prepare myself for an interview.</p>
+</blockquote>
+<h1 id="this"><a href="#this" class="headerlink" title="this"></a><code>this</code></h1><p>The keyword <code>this</code> may be most confusing feature in Javascript, especially for a beginner like me.<br>Therefore I dive deep into how to specify <code>this</code> may refer to and find a “four-step” rule may be helpful.</p>
+<h3 id="“Global”-Rule"><a href="#“Global”-Rule" class="headerlink" title="“Global” Rule"></a>“Global” Rule</h3><p>By default, <code>this</code> refers to the window object(in a browser).So if you use <code>this</code> in an <strong>Undeclared Object</strong>, <code>this</code> refers to thw window object, namely a global variable, it’s very dangerous since you may declare a global variable by default.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>) </span><br><span class="line"><span class="comment">// it will print Window Object</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whatisThis</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addGlobalVar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// By using `this` here you will attach a key "person" to global object window</span></span><br><span class="line">    <span class="comment">// You can now use this.person outside the function</span></span><br><span class="line">    <span class="keyword">this</span>.person = <span class="string">"zoulianghao"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">//return "zoulianghao"</span></span><br><span class="line">whatisThis(); <span class="comment">// return Window Object</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="use-strict"><a href="#use-strict" class="headerlink" title="use strict"></a>use strict</h5><p>To fix this horrible mistake, there is a new declaration added in ES5 called <code>use strict</code>. It means<br>the code will run in a strict mode which will not allow unspecified variable.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>) </span><br><span class="line"><span class="comment">// it will print Window Object</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whatisThis</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addGlobalVar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.person = <span class="string">"zoulianghao"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">//it will throw an undefined error</span></span><br><span class="line">whatisThis(); <span class="comment">// return "Undefined"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="“Nested”-Rule"><a href="#“Nested”-Rule" class="headerlink" title="“Nested” Rule"></a>“Nested” Rule</h3><p>“Nested” Rule means implicit rule (there is explicit rule next). This rule is called when <code>this</code> is nested in a declared object. Then <code>this</code> refer to the <strong>nearest</strong> parent object.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//"use strict" does not make a difference here</span></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    firstName: <span class="string">"zoulianghao"</span>,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"hello"</span>+<span class="keyword">this</span>.firstName);</span><br><span class="line">    &#125;</span><br><span class="line">    testThis: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>=== person</span><br><span class="line">    &#125;</span><br><span class="line">    dog:&#123;</span><br><span class="line">        sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">// By saying nearest, `this` refer to the dog object</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"hello"</span>+<span class="keyword">this</span>.firstname);</span><br><span class="line">        testThis: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>===person</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">person.sayhi()<span class="comment">// print hello zoulianghao</span></span><br><span class="line">person.testThis() <span class="comment">// return true</span></span><br><span class="line">person.dog.sayhi()<span class="comment">//print hello undefined</span></span><br><span class="line">person.dog.testThis()<span class="comment">//return false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Explicit-Rule"><a href="#Explicit-Rule" class="headerlink" title="Explicit Rule"></a>Explicit Rule</h3><p>By saying “Explicit”, I mean we use function <code>apply()</code>,<code>call()</code>,<code>bind()</code> to specify where <code>this</code> refers.<br>|Func|Para|InvokeTime|<br>|:-:|:-:|:-:|<br>|<code>call()</code>|<code>call(Arg, a, b, c)</code>|immediate|<br>|<code>apply()</code>|<code>apply(Arg, [a,b,c])</code>|immediate|<br>|<code>bind()</code>|<code>bind(Arg,a,b,c)</code>|delay|</p>
+<p><code>Arg</code> refers to anything you what <code>this</code> refers to. <code>a,b,c...</code>refers to the possible parameters you want to pass.</p>
+<h5 id="call-and-apply"><a href="#call-and-apply" class="headerlink" title="call() and apply()"></a><code>call()</code> and <code>apply()</code></h5><p>Let’s fix the <code>dog.sayHi()</code> method using <code>call()</code> and <code>apply()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">// by using call(person), we specify "this" as person object</span></span><br><span class="line">person.dog.sayHi.call(person)<span class="comment">// return hello zouliangho</span></span><br><span class="line">person.dog.testThis.call(person)<span class="comment">// return true</span></span><br></pre></td></tr></table></figure>
+
+<p>Anothor Common use of <code>call()</code> is to simplify your code.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zou = &#123;</span><br><span class="line">    firstname: zou,</span><br><span class="line">    lastname: lianghao,</span><br><span class="line">    sayhi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"hello"</span>+<span class="keyword">this</span>.firstname+<span class="keyword">this</span>.lastname);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pan = &#123;</span><br><span class="line">    firstname: feng,</span><br><span class="line">    lastname: pan,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// By using call, we do not need to define sayhi() in pan object</span></span><br><span class="line">zou.sayhi() <span class="comment">// print hello zoulianghao</span></span><br><span class="line">zou.sayhi.call(zhao) <span class="comment">// print hello panfeng</span></span><br></pre></td></tr></table></figure>
+
+<p>As for <code>apply()</code>, it is almost identical, just the parameters. It passes an array as parameters to the function.</p>
+<h5 id="bind"><a href="#bind" class="headerlink" title="bind()"></a><code>bind()</code></h5><p><code>bind()</code> is used for async codes. Different from <code>call()</code> to invoke immediately, <code>bind()</code> returns a function with the context of <code>this</code> bound to it already. And it can be called later. This feature is helpful when you do not know all the parameters yet.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zou = &#123;</span><br><span class="line">    firstName: Lianghao,</span><br><span class="line">    calculate: <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.firstname + <span class="string">" just calculated "</span>+ (a+b) </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> pan = &#123;</span><br><span class="line">    firstName: Feng,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// zou.calculate() needs two params, by using bind() you can pass one and then pass another one</span></span><br><span class="line"><span class="keyword">var</span> pan_cal = zou.calculate.bind(pan,<span class="number">1</span>);<span class="comment">// bind() returns a function definition</span></span><br><span class="line">pan_cal(<span class="number">2</span>) <span class="comment">// return Feng just calculated 3</span></span><br></pre></td></tr></table></figure>
+
+<p>To use <code>bind()</code> in async codes may be a very tricky problem. You may mess up with <code>this</code> very easy.<br>Here is a classical mistake many may encounter</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zou = &#123;</span><br><span class="line">    firstName: Lianghao,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span></span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"HELLO"</span>+ <span class="keyword">this</span>.firstName);</span><br><span class="line">        &#125;,<span class="number">2000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You may assume when I call <code>zou.sayHi()</code> it will print “Hello Lianghao” after 2s. However it will just print “HELLO Undefined”. Because it is async code so when the function is executed, <code>this</code> will refer to the window object. To solve this problem, we can use <code>bind()</code>, remember, <code>apply()</code> and <code>call()</code> is invoked immediately so they won’t work here.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zou = &#123;</span><br><span class="line">    firstName: Lianghao,</span><br><span class="line">    sayHi: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span></span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"HELLO"</span>+ <span class="keyword">this</span>.firstName);</span><br><span class="line">        &#125;.bind(<span class="keyword">this</span>),<span class="number">2000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// by adding .bind(this), we bind "this" to function, and "this" at this time refers to its nested parent</span></span><br><span class="line"><span class="comment">// so it refers to zou right now.</span></span><br><span class="line">zou.sayHi()<span class="comment">// it will print HELLO Lianghao in 2s</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="“New”-Rule"><a href="#“New”-Rule" class="headerlink" title="“New” Rule"></a>“New” Rule</h3><p><code>New</code> is a reserved keyword to set the context of <code>this</code>. It provides more powerful function than the previous functions. To put it in a simple way, <code>new</code> will create a object, and set the <code>this</code> to the object</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">fistname, lastname</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstname =firstname</span><br><span class="line">    <span class="keyword">this</span>.lastname = lastname</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// At this point "this" refers to the global object</span></span><br><span class="line"><span class="keyword">var</span> zou = <span class="keyword">new</span> person(<span class="string">"Lianghao"</span>,<span class="string">"zou"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(zou.firstname)<span class="comment">//print Lianghao</span></span><br><span class="line"><span class="built_in">console</span>.log(zou.lastname)<span class="comment">// print zou</span></span><br></pre></td></tr></table></figure>
+
+<p><code>new</code> may involve much more about OOP and prototype.<br>About OOP and prototype, to be continued.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+            <a href="/tags/this/" rel="tag"># this</a>
+          
+            <a href="/tags/Web-Development/" rel="tag"># Web Development</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/27/2019-03-25-Leetcod-Stack/" rel="next" title="[LeetCode]Stack And Queue">
+                <i class="fa fa-chevron-left"></i> [LeetCode]Stack And Queue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=845&q=80" alt="Lianghao Zou">
+            
+              <p class="site-author-name" itemprop="name">Lianghao Zou</p>
+              <p class="site-description motion-element" itemprop="description">A Beliver in Simple Code</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zlhhhhhhh" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="frankzoulh3@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/zlhhhhhh/activities" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.instagram.com/frankzoulh3/" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">1.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“Global”-Rule"><span class="nav-number">1.0.1.</span> <span class="nav-text">“Global” Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#use-strict"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">use strict</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#“Nested”-Rule"><span class="nav-number">1.0.2.</span> <span class="nav-text">“Nested” Rule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explicit-Rule"><span class="nav-number">1.0.3.</span> <span class="nav-text">Explicit Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#call-and-apply"><span class="nav-number">1.0.3.0.1.</span> <span class="nav-text">call() and apply()</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bind"><span class="nav-number">1.0.3.0.2.</span> <span class="nav-text">bind()</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#“New”-Rule"><span class="nav-number">1.0.4.</span> <span class="nav-text">“New” Rule</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lianghao Zou</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+<!-- 新增访客统计代码 -->
+<div class="busuanzi-count">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      访问用户： <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+    <div class="powered-by"></div>
+    <span class="site-uv">
+      <i class="fa fa-eye"></i>
+      访问次数： <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+    <!-- 博客字数统计 -->
+    <span class="site-pv">
+      <i class="fa fa-pencil"></i>
+      博客全站共： <span class="post-count">4.7k</span> 字
+    </span>
+</div>
+<!-- 新增访客统计代码 END-->
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://zlhhhh.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://zlhhhhhhh.github.io/2019/08/27/this-Exploration/';
+          this.page.identifier = '2019/08/27/this-Exploration/';
+          this.page.title = 'How to Use Javascript \"this\"';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zlhhhh.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
