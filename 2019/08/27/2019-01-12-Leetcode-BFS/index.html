@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题 使用队列实现BFS，伪代码如下 12345678910">
+<meta name="description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题">
 <meta name="keywords" content="Leetcode,BFS,Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[LeetCode]关于广度优先搜索">
 <meta property="og:url" content="http://zlhhhhhhh.github.io/2019/08/27/2019-01-12-Leetcode-BFS/index.html">
 <meta property="og:site_name" content="Lianghao&#39;s Writing">
-<meta property="og:description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题 使用队列实现BFS，伪代码如下 12345678910">
+<meta property="og:description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-29T18:23:06.168Z">
+<meta property="og:updated_time" content="2019-08-30T16:06:30.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[LeetCode]关于广度优先搜索">
-<meta name="twitter:description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题 使用队列实现BFS，伪代码如下 12345678910">
+<meta name="twitter:description" content="关于广度优先搜索广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个  有没有一条路径能够从A到B 从A到B的最短路径是什么  BFS的算法的空间复杂度为O(|V|+|E|) V是图中节点的数目，E是图中边的数目，时间复杂度也为O(|V|+|E|) ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题">
 
 
 
@@ -362,14 +362,14 @@
       
 
       
-        <br>
-
-<h2 id="关于广度优先搜索"><a href="#关于广度优先搜索" class="headerlink" title="关于广度优先搜索"></a>关于广度优先搜索</h2><p>广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个</p>
+        <h2 id="关于广度优先搜索"><a href="#关于广度优先搜索" class="headerlink" title="关于广度优先搜索"></a>关于广度优先搜索</h2><p>广度优先搜索(BFS)是一种用于遍历图的算法，一般用来解决的问题有两个</p>
 <ul>
 <li>有没有一条路径能够从A到B</li>
 <li>从A到B的最短路径是什么</li>
 </ul>
 <p>BFS的算法的空间复杂度为<code>O(|V|+|E|)</code> V是图中节点的数目，E是图中边的数目，时间复杂度也为<code>O(|V|+|E|)</code> ，最差的情况下BFS必须找完所有的边和节点，所以BFS并不适合大型的问题</p>
+<a id="more"></a>
+
 <p>使用队列实现BFS，伪代码如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">return the shortest distance between the given node and target node </span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS</span><span class="params">(root,target)</span>:</span></span><br><span class="line">    res_que = list();</span><br><span class="line">    res_que.append([<span class="number">0</span>,root])</span><br><span class="line">    <span class="keyword">while</span> len(res_que) != <span class="number">0</span>:</span><br><span class="line">        size = len(res_que)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(size):</span><br><span class="line">            [size,temp] = res_que.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">if</span> temp == target:</span><br><span class="line">                <span class="keyword">return</span> size</span><br><span class="line">            <span class="keyword">for</span> (temp1 <span class="keyword">in</span> temp.neighbos):</span><br><span class="line">                res_que.append([size+<span class="number">1</span>,temp1])</span><br><span class="line">     <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 
@@ -592,7 +592,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -614,7 +614,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -732,7 +732,7 @@
     <!-- 博客字数统计 -->
     <span class="site-pv">
       <i class="fa fa-pencil"></i>
-      博客全站共： <span class="post-count">4.7k</span> 字
+      博客全站共： <span class="post-count">5.2k</span> 字
     </span>
 </div>
 <!-- 新增访客统计代码 END-->
