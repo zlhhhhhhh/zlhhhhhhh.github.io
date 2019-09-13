@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,Algorithm,Monotone Stack,">
+  <meta name="keywords" content="Leetcode,Algorithm,HashMap,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="This is a typical problem to use a data structure called Monotone StackA Monotone Stack is a stack with its element in increasing or decreasing order">
-<meta name="keywords" content="Leetcode,Algorithm,Monotone Stack">
+<meta name="description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
+<meta name="keywords" content="Leetcode,Algorithm,HashMap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode]907-Sum of SubArray Minimum">
-<meta property="og:url" content="http://zlhhhhhhh.github.io/2019/08/30/LeetCode907/index.html">
+<meta property="og:title" content="[LeetCode]706-Design a HashMap">
+<meta property="og:url" content="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/index.html">
 <meta property="og:site_name" content="Lianghao&#39;s Writing">
-<meta property="og:description" content="This is a typical problem to use a data structure called Monotone StackA Monotone Stack is a stack with its element in increasing or decreasing order">
+<meta property="og:description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-30T16:10:11.828Z">
+<meta property="og:updated_time" content="2019-09-13T02:47:28.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode]907-Sum of SubArray Minimum">
-<meta name="twitter:description" content="This is a typical problem to use a data structure called Monotone StackA Monotone Stack is a stack with its element in increasing or decreasing order">
+<meta name="twitter:title" content="[LeetCode]706-Design a HashMap">
+<meta name="twitter:description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://zlhhhhhhh.github.io/2019/08/30/LeetCode907/">
+  <link rel="canonical" href="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/">
 
 
 
 
 
-  <title>[LeetCode]907-Sum of SubArray Minimum | Lianghao's Writing</title>
+  <title>[LeetCode]706-Design a HashMap | Lianghao's Writing</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zlhhhhhhh.github.io/2019/08/30/LeetCode907/">
+    <link itemprop="mainEntityOfPage" href="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lianghao Zou">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode]907-Sum of SubArray Minimum</h1>
+          <h1 class="post-title" itemprop="name headline">[LeetCode]706-Design a HashMap</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-30T12:23:29-05:00">
-                2019-08-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T12:23:29-05:00">
+                2019-09-12
               </time>
             
 
@@ -333,8 +333,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/30/LeetCode907/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/30/LeetCode907/" itemprop="commentCount"></span>
+                <a href="/2019/09/12/2019-09-12-Leetcode-HashMap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/2019-09-12-Leetcode-HashMap/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,20 +362,26 @@
       
 
       
-        <p>This is a typical problem to use a data structure called <em>Monotone Stack</em><br>A <em>Monotone Stack</em> is a stack with its element in increasing or decreasing order</p>
+        <p>It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do <code>HashMap = dict{}</code>, Because I never expect any company would test that on a real interview. Well, now looks like LinkedIn does.</p>
 <a id="more"></a>
-
 <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><blockquote>
-<p>Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray &gt; of A.Since the answer may be large, return the answer modulo 10^9 + 7.</p>
+<p>Design a HashMap without using any built-in hash table libraries. To be specific, your design should include these funcions:</p>
+<ul>
+<li><code>put(key, value)</code>: Insert a (key,value) pair into HashMap. If the value already exists in the HashMap, update the value.</li>
+<li><code>get(key)</code>: Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.</li>
+<li><code>remove(key)</code>: Remove the mapping for the value key if this map contains the mapping for key.</li>
+</ul>
 </blockquote>
-<h3 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sumSubarrayMins</span><span class="params">(A:List[int])</span>:</span></span><br><span class="line">    <span class="comment"># we maintain two stacks to track the index of left and right maximum elements of a given elements </span></span><br><span class="line">    <span class="comment"># in A</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    leftStack, rightStack = [<span class="number">0</span>], [len(A)<span class="number">-1</span>]</span><br><span class="line">    leftMin, rightStack = [<span class="number">-1</span>]*len(A), [len(A)]*len(A)</span><br><span class="line">    <span class="comment"># left part</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(A)):</span><br><span class="line">        <span class="keyword">if</span> A[i] &gt; A[leftStack[<span class="number">-1</span>]]:</span><br><span class="line">            leftMin[i] = leftStack[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span> leftStack <span class="keyword">and</span> A[leftStack[<span class="number">-1</span>]]&gt;=A[i]:</span><br><span class="line">                leftStack.pop()</span><br><span class="line">            lefMin[i] = <span class="number">-1</span> <span class="keyword">if</span> <span class="keyword">not</span> lefStack <span class="keyword">else</span> lefStack[<span class="number">-1</span>]</span><br><span class="line">        lefStack.append(i)</span><br><span class="line">    <span class="comment"># right part</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(A)<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">        <span class="keyword">if</span> A[j] &gt; A[rightStack[<span class="number">-1</span>]]:</span><br><span class="line">            rightMin[j] = rightStack[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">while</span> rightStack <span class="keyword">and</span> A[rightStack[<span class="number">-1</span>]]&gt;A[i]:</span><br><span class="line">                rightStack.pop()</span><br><span class="line">            rightMin[j] = len(A) <span class="keyword">if</span> <span class="keyword">not</span> rightStack <span class="keyword">else</span> rightStack[<span class="number">-1</span>]</span><br><span class="line">        rigthStack.append(j)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">        res += A[i]*(i-leftMin[i])*(rightMin[i]-i)</span><br><span class="line">    <span class="keyword">return</span> res%(pow(<span class="number">10</span>,<span class="number">9</span>)+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,key, value)</span>:</span></span><br><span class="line">        self.key_value = (key, value)</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashMap</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.capcity = <span class="number">10000</span></span><br><span class="line">        self.map_arr = [<span class="literal">None</span>]*self.capcity</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key: int, value: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        value will always be non-negative.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        <span class="keyword">if</span> self.map_arr[start] <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.map_arr[start] = LinkedNode(key, value)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur = self.map_arr[start]</span><br><span class="line">            <span class="keyword">while</span> cur:</span><br><span class="line">                <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                    cur.key_value = (key, value)</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">if</span> cur.next <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                cur = cur.next</span><br><span class="line">            cur.next = LinkedNode(key, value)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        cur = self.map_arr[start]</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                <span class="keyword">return</span> cur.key_value[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, key: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes the mapping of the specified value key if this map contains a mapping for the key</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        pre, cur = self.map_arr[start], self.map_arr[start]</span><br><span class="line">        <span class="keyword">if</span> cur <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">        <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">            self.map_arr[start] = cur.next</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur = cur.next</span><br><span class="line">            <span class="keyword">while</span> cur:</span><br><span class="line">                <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                    pre.next = cur.next</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    pre = pre.next</span><br><span class="line">                    cur = cur.next</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line"><span class="comment"># Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = MyHashMap()</span></span><br><span class="line"><span class="comment"># obj.put(key,value)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key)</span></span><br><span class="line"><span class="comment"># obj.remove(key)</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Thinking-Behind-Code"><a href="#Thinking-Behind-Code" class="headerlink" title="Thinking Behind Code"></a>Thinking Behind Code</h3><p>First, it’s easy to come up with and easy to rule out the brute force solution with O(N^2) time complexity. Then we shall take a step further to come up with the idea that this problem can be simplified as a problem to find the index of first left element and first right element that are less than the given element. Because between the two indexs, all the subarrays containing the given element will return a maximum element of the given element, because it’s the smallest. Therefore the result is equal to the given element A[i]*(#subarray).</p>
-<p>So it all boils down to find the left and right index. Here comes our monotone stack.Taking the left side as an example. I will clarify some key code.<br><br></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leftMin, rightStack = [<span class="number">-1</span>]*len(A), [len(A)]*len(A)</span><br></pre></td></tr></table></figure>
-
-<p>To initialize the stack, the index of first smaller element should be set to -1 which means there is an imaginery element indexed -1 to calculate the distance.<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> A[i] &gt; A[leftStack[<span class="number">-1</span>]]:</span><br><span class="line">    leftMin[i] = leftStack[<span class="number">-1</span>]</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">while</span> leftStack <span class="keyword">and</span> A[leftStack[<span class="number">-1</span>]]&gt;=A[i]:</span><br><span class="line">        leftStack.pop()</span><br><span class="line">    lefMin[i] = <span class="number">-1</span> <span class="keyword">if</span> <span class="keyword">not</span> lefStack <span class="keyword">else</span> lefStack[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure></p>
-<p>If current element is greater than the top leftStack, the first left smaller element is leftStack.top().<br>In other case, pop the top out of stack until is empty or find the smaller one.<br><strong>Pay attention to <code>&gt;=</code> symbol</strong> You should use unstrict greater than(&gt;=) to make sure to handle the equal elements properly. You can use &gt;= once, either in left loop or right loop.</p>
+<h3 id="Thinking-Behind-Code"><a href="#Thinking-Behind-Code" class="headerlink" title="Thinking Behind Code"></a>Thinking Behind Code</h3><p>I once took a course called <strong>Data Structure and Algorithm</strong> back in graduate school, and was told about something like collision. Therefore, the first thing came to my mind was that using an array to store the (key,value), and when collision happens, we just keep searching for an openning after that position. However, I found the linked chain to be more elegant and efficient to avoid use a huge array. It looks like this </p>
+<blockquote>
+<pre><code>| A | B | C |...| J |
+  |       |       |
+  A1     C1      J1
+  |
+ A2</code></pre></blockquote>
+<p>This can be implemented with a small array <code>self.arr_map</code>. When a collision happens, it will naturally expands <code>cur.next = LinkedNode(key,value)</code></p>
 
       
     </div>
@@ -397,7 +403,7 @@
           
             <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
-            <a href="/tags/Monotone-Stack/" rel="tag"><i class="fa fa-tag"></i> Monotone Stack</a>
+            <a href="/tags/HashMap/" rel="tag"><i class="fa fa-tag"></i> HashMap</a>
           
         </div>
       
@@ -410,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/27/this-Exploration/" rel="next" title="How to Use Javascript " this"">
-                <i class="fa fa-chevron-left"></i> How to Use Javascript "this"
+              <a href="/2019/08/30/LeetCode907/" rel="next" title="[LeetCode]907-Sum of SubArray Minimum">
+                <i class="fa fa-chevron-left"></i> [LeetCode]907-Sum of SubArray Minimum
               </a>
             
           </div>
@@ -420,8 +426,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/12/2019-09-12-Leetcode-HashMap/" rel="prev" title="[LeetCode]706-Design a HashMap">
-                [LeetCode]706-Design a HashMap <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/12/2019-09-12-Mid-Autumn-Festival/" rel="prev" title="中秋节快乐">
+                中秋节快乐 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -776,9 +782,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://zlhhhhhhh.github.io/2019/08/30/LeetCode907/';
-          this.page.identifier = '2019/08/30/LeetCode907/';
-          this.page.title = '[LeetCode]907-Sum of SubArray Minimum';
+          this.page.url = 'http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/';
+          this.page.identifier = '2019/09/12/2019-09-12-Leetcode-HashMap/';
+          this.page.title = '[LeetCode]706-Design a HashMap';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zlhhhh.disqus.com/embed.js';
