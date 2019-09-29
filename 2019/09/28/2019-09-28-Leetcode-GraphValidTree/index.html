@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="Leetcode,Algorithm,HashMap,">
+  <meta name="keywords" content="Leetcode,Algorithm,BFS,DFS,Union Find,">
 
 
 
@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
-<meta name="keywords" content="Leetcode,Algorithm,HashMap">
+<meta name="description" content="This problem can be solved using Breadth First Search, Depth First Search and Union Find, which makes it stands out to be a classic problem if you want to learn the difference of the three algorithms.">
+<meta name="keywords" content="Leetcode,Algorithm,BFS,DFS,Union Find">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode]706-Design a HashMap">
-<meta property="og:url" content="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/index.html">
+<meta property="og:title" content="[Leetcode]261-Graph Valid Tree">
+<meta property="og:url" content="http://zlhhhhhhh.github.io/2019/09/28/2019-09-28-Leetcode-GraphValidTree/index.html">
 <meta property="og:site_name" content="Lianghao&#39;s Writing">
-<meta property="og:description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
+<meta property="og:description" content="This problem can be solved using Breadth First Search, Depth First Search and Union Find, which makes it stands out to be a classic problem if you want to learn the difference of the three algorithms.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-13T02:47:28.526Z">
+<meta property="og:updated_time" content="2019-09-29T04:26:51.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[LeetCode]706-Design a HashMap">
-<meta name="twitter:description" content="It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do HashMap = dict{}, Because I never expect any company would test that on a real interview. We">
+<meta name="twitter:title" content="[Leetcode]261-Graph Valid Tree">
+<meta name="twitter:description" content="This problem can be solved using Breadth First Search, Depth First Search and Union Find, which makes it stands out to be a classic problem if you want to learn the difference of the three algorithms.">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/">
+  <link rel="canonical" href="http://zlhhhhhhh.github.io/2019/09/28/2019-09-28-Leetcode-GraphValidTree/">
 
 
 
 
 
-  <title>[LeetCode]706-Design a HashMap | Lianghao's Writing</title>
+  <title>[Leetcode]261-Graph Valid Tree | Lianghao's Writing</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/">
+    <link itemprop="mainEntityOfPage" href="http://zlhhhhhhh.github.io/2019/09/28/2019-09-28-Leetcode-GraphValidTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lianghao Zou">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[LeetCode]706-Design a HashMap</h1>
+          <h1 class="post-title" itemprop="name headline">[Leetcode]261-Graph Valid Tree</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-12T12:23:29-05:00">
-                2019-09-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-28T21:17:55-05:00">
+                2019-09-28
               </time>
             
 
@@ -334,8 +334,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/12/2019-09-12-Leetcode-HashMap/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/12/2019-09-12-Leetcode-HashMap/" itemprop="commentCount"></span>
+                <a href="/2019/09/28/2019-09-28-Leetcode-GraphValidTree/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/28/2019-09-28-Leetcode-GraphValidTree/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -363,26 +363,22 @@
       
 
       
-        <p>It is a shame that I never thought about how to implement Hashmap myself. Because I am lazy and I simply do <code>HashMap = dict{}</code>, Because I never expect any company would test that on a real interview. Well, now looks like LinkedIn does.</p>
+        <p>This problem can be solved using Breadth First Search, Depth First Search and Union Find, which makes it stands out to be a classic problem if you want to learn the difference of the three algorithms.</p>
 <a id="more"></a>
 <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><blockquote>
-<p>Design a HashMap without using any built-in hash table libraries. To be specific, your design should include these funcions:</p>
+<p>Given n nodes labeled from 0 to n-1 and a list of undirected edges (each edge is a pair of nodes), write a function to check whether  &gt; these edges make up a valid tree.</p>
 <ul>
-<li><code>put(key, value)</code>: Insert a (key,value) pair into HashMap. If the value already exists in the HashMap, update the value.</li>
-<li><code>get(key)</code>: Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.</li>
-<li><code>remove(key)</code>: Remove the mapping for the value key if this map contains the mapping for key.</li>
+<li>Input: n = 5, and edges = [[0,1], [0,2], [0,3], [1,4]]</li>
+<li>Output: true</li>
 </ul>
 </blockquote>
-<h3 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,key, value)</span>:</span></span><br><span class="line">        self.key_value = (key, value)</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashMap</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.capcity = <span class="number">10000</span></span><br><span class="line">        self.map_arr = [<span class="literal">None</span>]*self.capcity</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key: int, value: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        value will always be non-negative.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        <span class="keyword">if</span> self.map_arr[start] <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.map_arr[start] = LinkedNode(key, value)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur = self.map_arr[start]</span><br><span class="line">            <span class="keyword">while</span> cur:</span><br><span class="line">                <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                    cur.key_value = (key, value)</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">if</span> cur.next <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                cur = cur.next</span><br><span class="line">            cur.next = LinkedNode(key, value)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        cur = self.map_arr[start]</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                <span class="keyword">return</span> cur.key_value[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, key: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes the mapping of the specified value key if this map contains a mapping for the key</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = key%self.capcity</span><br><span class="line">        pre, cur = self.map_arr[start], self.map_arr[start]</span><br><span class="line">        <span class="keyword">if</span> cur <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">        <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">            self.map_arr[start] = cur.next</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur = cur.next</span><br><span class="line">            <span class="keyword">while</span> cur:</span><br><span class="line">                <span class="keyword">if</span> cur.key_value[<span class="number">0</span>] == key:</span><br><span class="line">                    pre.next = cur.next</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    pre = pre.next</span><br><span class="line">                    cur = cur.next</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line"><span class="comment"># Your MyHashMap object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = MyHashMap()</span></span><br><span class="line"><span class="comment"># obj.put(key,value)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get(key)</span></span><br><span class="line"><span class="comment"># obj.remove(key)</span></span><br></pre></td></tr></table></figure>
+<h3 id="Solution-Code"><a href="#Solution-Code" class="headerlink" title="Solution Code"></a>Solution Code</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DFS</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(n: int, edges: List[List[int]])</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> len(edges) != n<span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="comment"># Build a graph from edges using adjacent matrix</span></span><br><span class="line">    graph = [[<span class="number">-1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n)]</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> edges:</span><br><span class="line">        graph[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = e[<span class="number">1</span>]</span><br><span class="line">        graph[e[<span class="number">1</span>]][e[<span class="number">0</span>]] = e[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># using stack to call DFS</span></span><br><span class="line">    stack = list()</span><br><span class="line">    visited = [<span class="literal">False</span>]*n</span><br><span class="line"></span><br><span class="line">    <span class="comment">#start from node 0</span></span><br><span class="line">    stack.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">while</span> stack:</span><br><span class="line">        n = stack.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># if revist a node return false </span></span><br><span class="line">        <span class="keyword">if</span> visited[n]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> graph[n]:</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">-1</span></span><br><span class="line">                stack.append(i)</span><br><span class="line">                <span class="comment"># cut off the way between i and its parent</span></span><br><span class="line">                graph[i][n] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># rule the situation that there are separate trees</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> visited:</span><br><span class="line">        <span class="keyword">if</span> i == <span class="literal">False</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="Thinking-Behind-Code"><a href="#Thinking-Behind-Code" class="headerlink" title="Thinking Behind Code"></a>Thinking Behind Code</h3><p>I once took a course called <strong>Data Structure and Algorithm</strong> back in graduate school, and was told about something like collision. Therefore, the first thing came to my mind was that using an array to store the (key,value), and when collision happens, we just keep searching for an openning after that position. However, I found the linked chain to be more elegant and efficient to avoid use a huge array. It looks like this </p>
-<blockquote>
-<pre><code>| A | B | C |...| J |
-  |       |       |
-  A1     C1      J1
-  |
- A2</code></pre></blockquote>
-<p>This can be implemented with a small array <code>self.arr_map</code>. When a collision happens, it will naturally expands <code>cur.next = LinkedNode(key,value)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># BFS</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">( n: int, edges: List[List[int]])</span> -&gt; bool:</span></span><br><span class="line">    <span class="keyword">if</span> len(edges) != n<span class="number">-1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    graph = [[<span class="number">-1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n)]</span><br><span class="line">    <span class="keyword">for</span> e <span class="keyword">in</span> edges:</span><br><span class="line">        graph[e[<span class="number">0</span>]][e[<span class="number">1</span>]] = e[<span class="number">1</span>]</span><br><span class="line">        graph[e[<span class="number">1</span>]][e[<span class="number">0</span>]] = e[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    visted = [<span class="literal">False</span>]*n</span><br><span class="line">    queue = list()</span><br><span class="line">    queue.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> visited[node]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> i != <span class="number">-1</span>:</span><br><span class="line">                queue.append(i)</span><br><span class="line">                graph[i][n] = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> visited:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> i:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Union Find(Just Quick Union)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(n: int, edges: List[List[int]])</span> -&gt; bool:</span></span><br><span class="line">    nums = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</span><br><span class="line">    <span class="keyword">for</span> edge <span class="keyword">in</span> edges:</span><br><span class="line">        <span class="comment"># two vertices belong same set</span></span><br><span class="line">        <span class="keyword">if</span> find(nums,edge[<span class="number">0</span>], edge[<span class="number">1</span>]):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        union(nums,edge[<span class="number">0</span>],edge[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> n<span class="number">-1</span> == len(edges)</span><br><span class="line"></span><br><span class="line"><span class="comment"># find root of nums[i]</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">root</span><span class="params">(nums, i)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> nums[i] != i:</span><br><span class="line">        i = nums[i]</span><br><span class="line">    <span class="keyword">return</span> nums[i]</span><br><span class="line"></span><br><span class="line"><span class="comment"># find if i and j are from same set</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(nums, i, j)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> root(nums,i) == root(nums,j)</span><br><span class="line"></span><br><span class="line"><span class="comment"># unify two trees</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(nums, i, j)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> find(nums, i, j):</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    nums[root[i]] = root[j]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Thinking-behind-Code"><a href="#Thinking-behind-Code" class="headerlink" title="Thinking behind Code"></a>Thinking behind Code</h3><p>Intuitively, we would apply DFS or BFS to iterate every node to examing if there is a circle. One trick worth noting is that when in the iteration, we should cut off the path between a node and its parent in case it heads back. These two methods are time consuming. The quick way is to use union find. We do not even have to use weighted union find or path compression in this problem. Because the input size won’t be too large. The idea is that we have to make sure two nodes in one edge are not from one set, namely no cycles. Firstly, we initialize the array as n separate nodes <code>nums = [i for i in range(n)]</code>. We iterate <code>edges</code>, if they share a common root which means that they are connected already, we return false. Or we can connect them using <code>union(nums, edge[0], edge[1])</code>. When we return, we should rule out the situation that there are separate nodes.</p>
 
       
     </div>
@@ -404,7 +400,11 @@
           
             <a href="/tags/Algorithm/" rel="tag"><i class="fa fa-tag"></i> Algorithm</a>
           
-            <a href="/tags/HashMap/" rel="tag"><i class="fa fa-tag"></i> HashMap</a>
+            <a href="/tags/BFS/" rel="tag"><i class="fa fa-tag"></i> BFS</a>
+          
+            <a href="/tags/DFS/" rel="tag"><i class="fa fa-tag"></i> DFS</a>
+          
+            <a href="/tags/Union-Find/" rel="tag"><i class="fa fa-tag"></i> Union Find</a>
           
         </div>
       
@@ -417,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/30/2019-08-30-LeetCode-Monotone-Stack/" rel="next" title="[LeetCode]907-Sum of SubArray Minimum">
-                <i class="fa fa-chevron-left"></i> [LeetCode]907-Sum of SubArray Minimum
+              <a href="/2019/09/16/2019-09-16-Python-Ref/" rel="next" title="Python Reference">
+                <i class="fa fa-chevron-left"></i> Python Reference
               </a>
             
           </div>
@@ -426,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/12/2019-09-12-Mid-Autumn-Festival/" rel="prev" title="中秋节快乐">
-                中秋节快乐 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-Code"><span class="nav-number">2.</span> <span class="nav-text">Solution Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thinking-Behind-Code"><span class="nav-number">3.</span> <span class="nav-text">Thinking Behind Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">Problem Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-Code"><span class="nav-number">2.</span> <span class="nav-text">Solution Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Thinking-behind-Code"><span class="nav-number">3.</span> <span class="nav-text">Thinking behind Code</span></a></li></ol></div>
             
 
           </div>
@@ -792,9 +788,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://zlhhhhhhh.github.io/2019/09/12/2019-09-12-Leetcode-HashMap/';
-          this.page.identifier = '2019/09/12/2019-09-12-Leetcode-HashMap/';
-          this.page.title = '[LeetCode]706-Design a HashMap';
+          this.page.url = 'http://zlhhhhhhh.github.io/2019/09/28/2019-09-28-Leetcode-GraphValidTree/';
+          this.page.identifier = '2019/09/28/2019-09-28-Leetcode-GraphValidTree/';
+          this.page.title = '[Leetcode]261-Graph Valid Tree';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zlhhhh.disqus.com/embed.js';
